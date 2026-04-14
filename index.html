@@ -175,7 +175,6 @@ h1 {
 
 /* 終了済みカード */
 .quest-card.cleared {
-  opacity: 0.45;
   border-color: #444 !important;
 }
 .quest-card.cleared .tag {
@@ -183,17 +182,32 @@ h1 {
   color: #888;
 }
 .quest-card.cleared .quest-title {
-  color: #666;
+  color: #555;
   text-decoration: line-through;
+}
+.quest-card.cleared .quest-meta {
+  opacity: 0.35;
 }
 .quest-card.cleared .cmd,
 .quest-card.cleared .cmd.off {
-  color: #444;
+  color: #333;
   pointer-events: none;
+}
+.quest-card.cleared .cleared-msg {
+  opacity: 0.55;
+}
+.quest-card.cleared .hp-bar-outer {
+  border-color: #555;
 }
 .quest-card.cleared .hp-bar-inner {
   background: #555 !important;
   animation: none !important;
+}
+.quest-card.cleared .card-hp-label {
+  color: #777;
+}
+.quest-card.cleared .hp-num {
+  color: #777;
 }
 .cleared-badge {
   display: inline-block;
@@ -338,7 +352,7 @@ footer {
       💻 オンライン配信<br>
       💰 参加費：0G（無料）
     </div>
-    <div style="margin-bottom:1rem; font-size:0.88rem; color:#666; line-height:1.8;">
+    <div class="cleared-msg" style="margin-bottom:1rem; font-size:0.88rem; color:#777; line-height:1.8;">
       ▼ ご参加いただいた ぼうけんしゃの みなさん、<br>　 ありがとうございました！
     </div>
     <div class="card-hp">
