@@ -173,6 +173,38 @@ h1 {
 
 .quest-card { display: flex; flex-direction: column; }
 
+/* 終了済みカード */
+.quest-card.cleared {
+  opacity: 0.45;
+  border-color: #444 !important;
+}
+.quest-card.cleared .tag {
+  background: #444;
+  color: #888;
+}
+.quest-card.cleared .quest-title {
+  color: #666;
+  text-decoration: line-through;
+}
+.quest-card.cleared .cmd,
+.quest-card.cleared .cmd.off {
+  color: #444;
+  pointer-events: none;
+}
+.quest-card.cleared .hp-bar-inner {
+  background: #555 !important;
+  animation: none !important;
+}
+.cleared-badge {
+  display: inline-block;
+  border: 2px solid #555;
+  color: #666;
+  font-size: 0.75rem;
+  padding: 2px 10px;
+  margin-bottom: 0.8rem;
+  letter-spacing: 2px;
+}
+
 .tag {
   display: inline-block;
   background: var(--fg);
@@ -272,30 +304,7 @@ footer {
 <!-- クエストカード（縦並び） -->
 <div class="quest-stack">
 
-  <div class="win quest-card">
-    <span class="tag">QUEST 01</span>
-    <h3 class="quest-title">「冒険のつづけかた」を考える</h3>
-    <div class="quest-meta">
-      📅 4/12（SUN）15:00〜<br>
-      💻 オンライン配信<br>
-      💰 参加費：0G（無料）
-    </div>
-    <div class="cmds">
-      <a href="https://peatix.com/event/4892707/view" class="cmd" target="_blank">パーティーにくわわる</a>
-      <span class="cmd off">じゅもん</span>
-      <span class="cmd off">にげる</span>
-    </div>
-    <div class="card-hp">
-      <div class="card-hp-label">冒険者数: <span id="e1Num">…</span> 人</div>
-      <div class="hp-row" style="margin-bottom:0;">
-        <div class="hp-bar-outer" id="e1BarOuter" style="height:18px;">
-          <div id="e1Bar" class="hp-bar-inner"></div>
-        </div>
-        <span class="hp-num" style="min-width:60px; font-size:0.82rem;"><span id="e1Pct">0</span>%</span>
-      </div>
-    </div>
-  </div>
-
+  <!-- QUEST 02（上に移動） -->
   <div class="win quest-card">
     <span class="tag">QUEST 02</span>
     <h3 class="quest-title">『静かな時間の使い方』出版記念講演会</h3>
@@ -316,6 +325,29 @@ footer {
           <div id="e2Bar" class="hp-bar-inner"></div>
         </div>
         <span class="hp-num" style="min-width:60px; font-size:0.82rem;"><span id="e2Pct">0</span>%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUEST 01（終了済み・下に移動） -->
+  <div class="win quest-card cleared">
+    <span class="cleared-badge">── QUEST CLEARED ──</span>
+    <h3 class="quest-title">「冒険のつづけかた」を考える</h3>
+    <div class="quest-meta">
+      📅 4/12（SUN）15:00〜<br>
+      💻 オンライン配信<br>
+      💰 参加費：0G（無料）
+    </div>
+    <div style="margin-bottom:1rem; font-size:0.88rem; color:#666; line-height:1.8;">
+      ▼ ご参加いただいた ぼうけんしゃの みなさん、<br>　 ありがとうございました！
+    </div>
+    <div class="card-hp">
+      <div class="card-hp-label">冒険者数: <span id="e1Num">…</span> 人</div>
+      <div class="hp-row" style="margin-bottom:0;">
+        <div class="hp-bar-outer" id="e1BarOuter" style="height:18px;">
+          <div id="e1Bar" class="hp-bar-inner"></div>
+        </div>
+        <span class="hp-num" style="min-width:60px; font-size:0.82rem;"><span id="e1Pct">0</span>%</span>
       </div>
     </div>
   </div>
@@ -416,8 +448,8 @@ function render(e1, e2) {
 /* ── ©を3回クリックでGitHubのdata.json編集画面へ ── */
 
 // ★ここを自分のGitHub情報に書き換えてください★
-// 例: https://github.com/nozatan530/kochi-quest/edit/main/data.json
-const GITHUB_EDIT_URL = 'https://github.com/nozatan530/kochi-quest/edit/main/data.json';
+// 例: https://github.com/あなたのID/kochi-quest/edit/main/data.json
+const GITHUB_EDIT_URL = 'https://github.com/あなたのID/kochi-quest/edit/main/data.json';
 
 let clickCount = 0, clickTimer = null;
 
